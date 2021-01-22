@@ -19,4 +19,10 @@
 	<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>
