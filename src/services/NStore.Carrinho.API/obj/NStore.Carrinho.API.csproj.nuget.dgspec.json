@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\services\\NStore.Carrinho.API\\NStore.Carrinho.API.csproj": {}
+    "C:\\git\\meus-projetos\\n-store\\src\\services\\NStore.Carrinho.API\\NStore.Carrinho.API.csproj": {}
   },
   "projects": {
-    "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\services\\NStore.Carrinho.API\\NStore.Carrinho.API.csproj": {
+    "C:\\git\\meus-projetos\\n-store\\src\\services\\NStore.Carrinho.API\\NStore.Carrinho.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\services\\NStore.Carrinho.API\\NStore.Carrinho.API.csproj",
+        "projectUniqueName": "C:\\git\\meus-projetos\\n-store\\src\\services\\NStore.Carrinho.API\\NStore.Carrinho.API.csproj",
         "projectName": "NStore.Carrinho.API",
-        "projectPath": "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\services\\NStore.Carrinho.API\\NStore.Carrinho.API.csproj",
+        "projectPath": "C:\\git\\meus-projetos\\n-store\\src\\services\\NStore.Carrinho.API\\NStore.Carrinho.API.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\services\\NStore.Carrinho.API\\obj\\",
+        "outputPath": "C:\\git\\meus-projetos\\n-store\\src\\services\\NStore.Carrinho.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",

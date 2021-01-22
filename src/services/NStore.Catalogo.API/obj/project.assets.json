@@ -270,11 +270,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\services\\NStore.Catalogo.API\\NStore.Catalogo.API.csproj",
+      "projectUniqueName": "C:\\git\\meus-projetos\\n-store\\src\\services\\NStore.Catalogo.API\\NStore.Catalogo.API.csproj",
       "projectName": "NStore.Catalogo.API",
-      "projectPath": "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\services\\NStore.Catalogo.API\\NStore.Catalogo.API.csproj",
+      "projectPath": "C:\\git\\meus-projetos\\n-store\\src\\services\\NStore.Catalogo.API\\NStore.Catalogo.API.csproj",
       "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\services\\NStore.Catalogo.API\\obj\\",
+      "outputPath": "C:\\git\\meus-projetos\\n-store\\src\\services\\NStore.Catalogo.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",

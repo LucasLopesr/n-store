@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HyGHm8Kk5J+OSY/MOSl08bR0lTcx+QR9jN1LAoIvspzWB8FEvLvKwInmhaXfjpHjsxOjMLafWg9WXm5vSNYhWw==",
+  "dgSpecHash": "6oKOA8caDZ1l2usrpkbHrr0gFjGTVmKmD68py5Oa4GHuiuzg5Z34xJTnLMb6PSQRYki38IOeajzB75DD46mKUQ==",
   "success": true,
-  "projectFilePath": "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\services\\NStore.Catalogo.API\\NStore.Catalogo.API.csproj",
+  "projectFilePath": "C:\\git\\meus-projetos\\n-store\\src\\services\\NStore.Catalogo.API\\NStore.Catalogo.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

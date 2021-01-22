@@ -13,15 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{B7137699-BF9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "identidade", "identidade", "{53046EC8-A79E-4696-8394-5A5BE32E6370}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.Identidade.API", "src\services\NStore.Identidade.API\NStore.Identidade.API.csproj", "{DA51A5CC-0AD9-426F-9830-5FDC7151A252}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Identidade.API", "src\services\NStore.Identidade.API\NStore.Identidade.API.csproj", "{DA51A5CC-0AD9-426F-9830-5FDC7151A252}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mvc", "mvc", "{0D0C690C-62F8-4F92-9C93-7BBF59000F2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.WebApp.MVC", "src\web\NStore.WebApp.MVC\NStore.WebApp.MVC.csproj", "{640D0A55-20BC-438F-B6B3-7A53E77D63AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.WebApp.MVC", "src\web\NStore.WebApp.MVC\NStore.WebApp.MVC.csproj", "{640D0A55-20BC-438F-B6B3-7A53E77D63AA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{4A837D38-E824-4EEF-BCF4-D2C7C21C72B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.Core", "src\building blocks\NStore.Core\NStore.Core.csproj", "{FA5DDF87-FA91-43C8-9019-939F487AEDD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Core", "src\building blocks\NStore.Core\NStore.Core.csproj", "{FA5DDF87-FA91-43C8-9019-939F487AEDD1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "carrinho", "carrinho", "{5889EA62-6C5D-48AE-8B24-237405D7CFCB}"
 EndProject
@@ -33,11 +33,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pagamento", "pagamento", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pedido", "pedido", "{D0F1DDBA-8FF6-476D-84AB-BAAFB7297587}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.Carrinho.API", "src\services\NStore.Carrinho.API\NStore.Carrinho.API.csproj", "{8876517B-50EF-4A34-AC9C-1169CC792FA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Carrinho.API", "src\services\NStore.Carrinho.API\NStore.Carrinho.API.csproj", "{8876517B-50EF-4A34-AC9C-1169CC792FA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.Catalogo.API", "src\services\NStore.Catalogo.API\NStore.Catalogo.API.csproj", "{D623E45E-B253-4B46-BE34-515383E34C1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Catalogo.API", "src\services\NStore.Catalogo.API\NStore.Catalogo.API.csproj", "{D623E45E-B253-4B46-BE34-515383E34C1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.Cliente.API", "src\services\NStore.Cliente.API\NStore.Cliente.API.csproj", "{6171C03C-86EE-414F-A88B-51D6C2FAF551}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Cliente.API", "src\services\NStore.Cliente.API\NStore.Cliente.API.csproj", "{6171C03C-86EE-414F-A88B-51D6C2FAF551}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.Pagamento.API", "src\services\NStore.Pagamento.API\NStore.Pagamento.API.csproj", "{668B3FCF-A7C3-4DF6-9115-AEEE4E4C209C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.Pedido.API", "src\services\NStore.Pedido.API\NStore.Pedido.API.csproj", "{43299E87-31CA-4672-8009-07D49DE3A3BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,14 @@ Global
 		{6171C03C-86EE-414F-A88B-51D6C2FAF551}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6171C03C-86EE-414F-A88B-51D6C2FAF551}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6171C03C-86EE-414F-A88B-51D6C2FAF551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{668B3FCF-A7C3-4DF6-9115-AEEE4E4C209C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{668B3FCF-A7C3-4DF6-9115-AEEE4E4C209C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{668B3FCF-A7C3-4DF6-9115-AEEE4E4C209C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{668B3FCF-A7C3-4DF6-9115-AEEE4E4C209C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43299E87-31CA-4672-8009-07D49DE3A3BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43299E87-31CA-4672-8009-07D49DE3A3BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43299E87-31CA-4672-8009-07D49DE3A3BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43299E87-31CA-4672-8009-07D49DE3A3BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +103,8 @@ Global
 		{8876517B-50EF-4A34-AC9C-1169CC792FA1} = {5889EA62-6C5D-48AE-8B24-237405D7CFCB}
 		{D623E45E-B253-4B46-BE34-515383E34C1C} = {EE9E449A-3B21-44D6-9A11-D0DE56D9FFFC}
 		{6171C03C-86EE-414F-A88B-51D6C2FAF551} = {8A999DB5-F1C6-42B6-A20C-E35E4CBC56F4}
+		{668B3FCF-A7C3-4DF6-9115-AEEE4E4C209C} = {70859D62-0DD1-4700-9BDF-C6F9BB18CF59}
+		{43299E87-31CA-4672-8009-07D49DE3A3BB} = {D0F1DDBA-8FF6-476D-84AB-BAAFB7297587}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5887B293-B0E3-48A5-B52E-38306461B52E}

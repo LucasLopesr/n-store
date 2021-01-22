@@ -813,11 +813,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\web\\NStore.WebApp.MVC\\NStore.WebApp.MVC.csproj",
+      "projectUniqueName": "C:\\git\\meus-projetos\\n-store\\src\\web\\NStore.WebApp.MVC\\NStore.WebApp.MVC.csproj",
       "projectName": "NStore.WebApp.MVC",
-      "projectPath": "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\web\\NStore.WebApp.MVC\\NStore.WebApp.MVC.csproj",
+      "projectPath": "C:\\git\\meus-projetos\\n-store\\src\\web\\NStore.WebApp.MVC\\NStore.WebApp.MVC.csproj",
       "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\web\\NStore.WebApp.MVC\\obj\\",
+      "outputPath": "C:\\git\\meus-projetos\\n-store\\src\\web\\NStore.WebApp.MVC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",

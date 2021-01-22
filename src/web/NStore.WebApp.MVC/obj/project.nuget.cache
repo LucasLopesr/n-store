@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XxBcZllF0tHvphKx24/cAUWj2nk8b2k2BNq9dJ6ItsqaQxjARdkdda7pVpT574XRyanXnuwDO7/72A5b08YbBA==",
+  "dgSpecHash": "YXY3R7wluzWDuavtJIJZJFtyI4qVAkRGLmN1OReoMFvnb90C7lXH4l8vS3KLhQ/uRc3SKkpEEmfvH6gyEYhsBA==",
   "success": true,
-  "projectFilePath": "C:\\git\\meus-projetos\\n-store\\N-Store\\src\\web\\NStore.WebApp.MVC\\NStore.WebApp.MVC.csproj",
+  "projectFilePath": "C:\\git\\meus-projetos\\n-store\\src\\web\\NStore.WebApp.MVC\\NStore.WebApp.MVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\5.0.2\\microsoft.aspnetcore.mvc.razor.extensions.5.0.2.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\5.0.2\\microsoft.aspnetcore.mvc.razor.runtimecompilation.5.0.2.nupkg.sha512",
