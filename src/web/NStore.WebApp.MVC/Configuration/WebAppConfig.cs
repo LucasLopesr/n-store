@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NStore.WebApp.MVC.CustomExceptions;
 
 namespace NStore.WebApp.MVC.Configuration
 {
@@ -23,7 +24,8 @@ namespace NStore.WebApp.MVC.Configuration
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/erro/500");
+                app.UseStatusCodePagesWithRedirects("/erro/{0}");
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
@@ -31,6 +33,8 @@ namespace NStore.WebApp.MVC.Configuration
 
             app.UseRouting();
             app.UseIdentityConfiguration();
+
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
