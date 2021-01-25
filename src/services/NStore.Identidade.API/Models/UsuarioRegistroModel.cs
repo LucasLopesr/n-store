@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NStore.Identidade.API.Models
 {
-    public class UserRegistroModel
+    public class UsuarioRegistroModel
     {
         [Required(ErrorMessage = CAMPO_OBRIGATORIO)]
         [EmailAddress(ErrorMessage = CAMPO_INVALIDO)]
