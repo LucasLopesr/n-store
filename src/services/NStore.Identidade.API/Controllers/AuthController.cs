@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace NStore.Identidade.API.Controllers
 {
+    [Route("api/identidade")]
     public class AuthController : Controller
     {
 
@@ -17,7 +18,7 @@ namespace NStore.Identidade.API.Controllers
             this.userManager = userManager;
         }
 
-        [HttpPost("novo-usuario")]
+        [HttpPost("nova-conta")]
         public async Task<ActionResult> Registrar(UsuarioRegistroModel usuarioRegistro)
         {
             if (!ModelState.IsValid) return BadRequest();

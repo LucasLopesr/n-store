@@ -34,7 +34,12 @@ namespace NStore.Identidade.API
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "NStore.Identidade.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo 
+                { 
+                    Title = "NStore.Identidade.API", 
+                    Version = "v1",
+                    Description = "Documentação relacionada aos métodos de registro e autenticação de usuário."
+                });
             });
         }
 
@@ -44,7 +49,7 @@ namespace NStore.Identidade.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NStore.Identidade.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1"));
             }
 
             app.UseHttpsRedirection();
