@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using NStore.WebApp.MVC.Extension;
 using NStore.WebApp.MVC.Services;
 
 namespace NStore.WebApp.MVC.Configuration
@@ -8,6 +10,9 @@ namespace NStore.WebApp.MVC.Configuration
         public static void RegisterServices(this IServiceCollection services) 
         {
             services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUser, AspNetUser>();
         }
     }
 }
