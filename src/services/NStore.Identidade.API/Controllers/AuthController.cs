@@ -10,12 +10,12 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using static NStore.Identidade.API.Utils.MessagesUtils;
 
 namespace NStore.Identidade.API.Controllers
 {
-    [ApiController]
     [Route("api/identidade")]
-    public class AuthController : Controller
+    public class AuthController : MainController
     {
 
         private readonly SignInManager<IdentityUser> signInManager;
@@ -34,7 +34,7 @@ namespace NStore.Identidade.API.Controllers
         [HttpPost("nova-conta")]
         public async Task<ActionResult> Registrar(UsuarioRegistroModel usuarioRegistro)
         {
-            if (!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             var usuario = new IdentityUser
             {
@@ -47,26 +47,36 @@ namespace NStore.Identidade.API.Controllers
 
             if (result.Succeeded) 
             {
-                await signInManager.SignInAsync(usuario, false);
-                return Ok(await GerarJwt(usuarioRegistro.Email));
+                return CustomResponse(await GerarJwt(usuarioRegistro.Email));
             }
 
-            return BadRequest();
+            foreach (var erro in result.Errors)
+                AddErroProcessamento(erro.Description);
+            
+            return CustomResponse();
         }
 
         [HttpPost("autenticar")]
         public async Task<ActionResult> Autenticar(UsuarioLoginModel usuarioLogin)
         {
-            if (!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             var result = await signInManager.PasswordSignInAsync(usuarioLogin.Email, usuarioLogin.Senha, isPersistent: false, lockoutOnFailure: true);
 
             if (result.Succeeded)
             {
-                return Ok(await GerarJwt(usuarioLogin.Email));
+                return CustomResponse(await GerarJwt(usuarioLogin.Email));
             }
 
-            return BadRequest();
+            if (result.IsLockedOut) 
+            {
+                AddErroProcessamento(USUARIO_BLOQUEADO_POR_TENTATIVAS);
+                return CustomResponse();
+            }
+
+            AddErroProcessamento(USUARIO_SENHA_INVALIDOS);
+
+            return CustomResponse();
         }
 
         private async Task<UsuarioAutenticacaoResponse> GerarJwt(string email) 
