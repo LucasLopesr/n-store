@@ -1,11 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+
+using static NStore.Identidade.API.Utils.MessagesUtils;
 
 namespace NStore.Identidade.API.Models
 {
     public class UserLoginModel
     {
+        [Required(ErrorMessage = CAMPO_OBRIGATORIO)]
+        [EmailAddress(ErrorMessage = CAMPO_INVALIDO)]
+        public string Email { get; set; }
+        [Required(ErrorMessage = CAMPO_OBRIGATORIO)]
+        [StringLength(100, ErrorMessage = CAMPO_DEVE_CONTER_X_CARACERES, MinimumLength = 6)]
     }
 }
