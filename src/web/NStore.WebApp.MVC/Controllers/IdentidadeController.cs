@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace NStore.WebApp.MVC.Controllers
 {
-    public class IdentidadeController : Controller
+    public class IdentidadeController : MainController
     {
 
         private readonly IAutenticacaoService autenticacaoService;
@@ -35,6 +35,12 @@ namespace NStore.WebApp.MVC.Controllers
             if (!ModelState.IsValid) return View(usuario);
 
             var resposta = await autenticacaoService.Registrar(usuario);
+
+            if (ResponsePossuiErros(resposta.ResponseResult)) 
+            {
+                return View(usuario);
+            }
+
             await RealizarLogin(resposta);
             return RedirectToAction("Login", "Identidade");
         }
@@ -50,7 +56,8 @@ namespace NStore.WebApp.MVC.Controllers
         [Route("sair")]
         public async Task<IActionResult> Logout()
         {
-            return View();
+             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
     
         [HttpPost]
@@ -60,6 +67,12 @@ namespace NStore.WebApp.MVC.Controllers
             if (!ModelState.IsValid) return View(usuario);
 
             var resposta = await autenticacaoService.Login(usuario);
+
+            if (ResponsePossuiErros(resposta.ResponseResult))
+            {
+                return View(usuario);
+            }
+
             await RealizarLogin(resposta);
             return RedirectToAction("Index", "Home");
         }

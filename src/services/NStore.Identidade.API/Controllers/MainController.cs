@@ -16,7 +16,7 @@ namespace NStore.Identidade.API.Controllers
 
             return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]> 
             {
-                { "messages", Erros.ToArray() }
+                { "Mensagens", Erros.ToArray() }
             }));
         }
 
