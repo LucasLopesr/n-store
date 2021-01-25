@@ -47,8 +47,10 @@ namespace NStore.WebApp.MVC.Controllers
 
         [HttpGet]
         [Route("login")]
-        public IActionResult Login() 
+        public IActionResult Login(string returnUrl = null) 
         {
+            ViewData["ReturnUrl"] = returnUrl;
+
             return View();
         }
 
@@ -62,8 +64,9 @@ namespace NStore.WebApp.MVC.Controllers
     
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult> Login(UsuarioLoginViewModel usuario) 
+        public async Task<ActionResult> Login(UsuarioLoginViewModel usuario, string returnUrl = null) 
         {
+            ViewData["ReturnUrl"] = returnUrl;
             if (!ModelState.IsValid) return View(usuario);
 
             var resposta = await autenticacaoService.Login(usuario);
@@ -74,7 +77,9 @@ namespace NStore.WebApp.MVC.Controllers
             }
 
             await RealizarLogin(resposta);
-            return RedirectToAction("Index", "Home");
+
+            if (string.IsNullOrEmpty(returnUrl)) return RedirectToAction("Index", "Home");
+            return LocalRedirect(returnUrl);
         }
 
         private async Task RealizarLogin(UsuarioAutenticacaoResponse resposta) 

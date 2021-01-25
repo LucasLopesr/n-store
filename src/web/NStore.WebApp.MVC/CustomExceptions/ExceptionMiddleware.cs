@@ -32,7 +32,7 @@ namespace NStore.WebApp.MVC.CustomExceptions
         { 
             if (httpRequestException.StatusCode == HttpStatusCode.Unauthorized) 
             {
-                httpContext.Response.Redirect("/login");
+                httpContext.Response.Redirect($"/login?ReturnUrl={httpContext.Request.Path}");
                 return;
             }
 
