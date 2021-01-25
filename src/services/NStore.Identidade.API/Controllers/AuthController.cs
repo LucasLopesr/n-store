@@ -17,6 +17,7 @@ namespace NStore.Identidade.API.Controllers
             this.userManager = userManager;
         }
 
+        [HttpPost("novo-usuario")]
         public async Task<ActionResult> Registrar(UsuarioRegistroModel usuarioRegistro)
         {
             if (!ModelState.IsValid) return BadRequest();
@@ -39,7 +40,8 @@ namespace NStore.Identidade.API.Controllers
             return BadRequest();
         }
 
-        public async Task<ActionResult> Logar(UsuarioLoginModel usuarioLogin)
+        [HttpPost("autenticar")]
+        public async Task<ActionResult> Autenticar(UsuarioLoginModel usuarioLogin)
         {
             if (!ModelState.IsValid) return BadRequest();
 
