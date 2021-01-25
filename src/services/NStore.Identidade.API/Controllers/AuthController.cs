@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using NStore.Identidade.API.Extensions;
 using NStore.Identidade.API.Models;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -83,15 +84,22 @@ namespace NStore.Identidade.API.Controllers
         {
             var usuario = await userManager.FindByEmailAsync(email);
             var claims = await userManager.GetClaimsAsync(usuario);
-            var usuarioRoles = await userManager.GetRolesAsync(usuario);
+            var identityClaims = await ObterClaimsUsuario(claims, usuario);
+            var encodedToken = CodificarToken(identityClaims);
 
+            return ObterRespostaToken(encodedToken, usuario, claims);
+        }
+
+        private async Task<ClaimsIdentity> ObterClaimsUsuario(ICollection<Claim> claims, IdentityUser usuario) 
+        {
+            var usuarioRoles = await userManager.GetRolesAsync(usuario);
             claims.Add(new Claim(JwtRegisteredClaimNames.Sub, usuario.Id));
             claims.Add(new Claim(JwtRegisteredClaimNames.Email, usuario.Email));
             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
             claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, DateTime.UtcNow.ToEpochDate().ToString()));
             claims.Add(new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToEpochDate().ToString(), ClaimValueTypes.Integer64));
 
-            foreach (var role in usuarioRoles) 
+            foreach (var role in usuarioRoles)
             {
                 claims.Add(new Claim("role", role));
             }
@@ -99,11 +107,16 @@ namespace NStore.Identidade.API.Controllers
             var identityClaims = new ClaimsIdentity();
             identityClaims.AddClaims(claims);
 
+            return identityClaims;
+        }
+
+        private string CodificarToken(ClaimsIdentity identityClaims) 
+        {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
-            var token = tokenHandler.CreateToken(new SecurityTokenDescriptor 
-            { 
+            var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
+            {
                 Issuer = appSettings.Emissor,
                 Audience = appSettings.ValidoEm,
                 Subject = identityClaims,
@@ -111,8 +124,11 @@ namespace NStore.Identidade.API.Controllers
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             });
 
-            var encodedToken = tokenHandler.WriteToken(token);
+            return tokenHandler.WriteToken(token);
+        }
 
+        private UsuarioAutenticacaoResponse ObterRespostaToken(string encodedToken, IdentityUser usuario, IEnumerable<Claim> claims) 
+        {
             return new UsuarioAutenticacaoResponse
             {
                 AccessToken = encodedToken,
@@ -125,6 +141,5 @@ namespace NStore.Identidade.API.Controllers
                 }
             };
         }
-
     }
 }
