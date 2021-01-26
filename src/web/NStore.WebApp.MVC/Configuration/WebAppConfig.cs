@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NStore.WebApp.MVC.CustomExceptions;
+using NStore.WebApp.MVC.Extensions;
 
 namespace NStore.WebApp.MVC.Configuration
 {
@@ -12,6 +13,7 @@ namespace NStore.WebApp.MVC.Configuration
         public static IServiceCollection AddMvcConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddControllersWithViews();
+            services.Configure<AppSettings>(configuration);
 
             return services;
         }

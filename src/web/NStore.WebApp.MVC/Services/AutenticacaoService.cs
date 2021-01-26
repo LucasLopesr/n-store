@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
-using NStore.WebApp.MVC.Extension;
+using NStore.WebApp.MVC.Extensions;
 using NStore.WebApp.MVC.Models;
 using NStore.WebApp.MVC.Models.Errors;
 using System;
@@ -39,7 +39,7 @@ namespace NStore.WebApp.MVC.Services
         {
             var usuarioContent = ObterConteudo(usuario);
 
-            var response = await httpClient.PostAsync("{/api/identidade/nova-conta", usuarioContent);
+            var response = await httpClient.PostAsync("/api/identidade/nova-conta", usuarioContent);
 
             if (!TratarErrosResponse(response))
             {
