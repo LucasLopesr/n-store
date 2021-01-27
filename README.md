@@ -1,6 +1,17 @@
-# n-store
+# N-Store 
+## N-Store is a e-commerce with didactic purposes, implementing a distributed architecture.
 
-Implementando uma arquitetura distribuída
+# Technologies used
+* .NET 5.0
+* IdentityCore
+* EntityFrameworkCore
+* Jwt
 
-.NET 5.0
+# N-Store
+## N-Store é um e-commerce para fins didáticos, implementando uma arquitetura distribuída
 
+# Tecnologias utilizadas
+* .NET 5.0
+* IdentityCore
+* EntityFrameworkCore
+* Jwt
