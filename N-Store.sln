@@ -39,9 +39,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Catalogo.API", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Cliente.API", "src\services\NStore.Cliente.API\NStore.Cliente.API.csproj", "{6171C03C-86EE-414F-A88B-51D6C2FAF551}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.Pagamento.API", "src\services\NStore.Pagamento.API\NStore.Pagamento.API.csproj", "{668B3FCF-A7C3-4DF6-9115-AEEE4E4C209C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Pagamento.API", "src\services\NStore.Pagamento.API\NStore.Pagamento.API.csproj", "{668B3FCF-A7C3-4DF6-9115-AEEE4E4C209C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.Pedido.API", "src\services\NStore.Pedido.API\NStore.Pedido.API.csproj", "{43299E87-31CA-4672-8009-07D49DE3A3BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Pedido.API", "src\services\NStore.Pedido.API\NStore.Pedido.API.csproj", "{43299E87-31CA-4672-8009-07D49DE3A3BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{6E2F6E1A-41B7-42E8-8E14-DA042AA17D00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.WebApi.Core", "src\building blocks\NStore.WebApi.Core\NStore.WebApi.Core.csproj", "{0F5DF3B4-E350-4CE8-9E2B-CDB772055A43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +85,10 @@ Global
 		{43299E87-31CA-4672-8009-07D49DE3A3BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43299E87-31CA-4672-8009-07D49DE3A3BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43299E87-31CA-4672-8009-07D49DE3A3BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F5DF3B4-E350-4CE8-9E2B-CDB772055A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F5DF3B4-E350-4CE8-9E2B-CDB772055A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F5DF3B4-E350-4CE8-9E2B-CDB772055A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F5DF3B4-E350-4CE8-9E2B-CDB772055A43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +113,8 @@ Global
 		{6171C03C-86EE-414F-A88B-51D6C2FAF551} = {8A999DB5-F1C6-42B6-A20C-E35E4CBC56F4}
 		{668B3FCF-A7C3-4DF6-9115-AEEE4E4C209C} = {70859D62-0DD1-4700-9BDF-C6F9BB18CF59}
 		{43299E87-31CA-4672-8009-07D49DE3A3BB} = {D0F1DDBA-8FF6-476D-84AB-BAAFB7297587}
+		{6E2F6E1A-41B7-42E8-8E14-DA042AA17D00} = {A1A78BB6-3B5D-4214-B9BB-772B0E59C096}
+		{0F5DF3B4-E350-4CE8-9E2B-CDB772055A43} = {6E2F6E1A-41B7-42E8-8E14-DA042AA17D00}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5887B293-B0E3-48A5-B52E-38306461B52E}

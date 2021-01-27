@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NStore.WebApi.Core.Identidade;
 
 namespace NStore.Identidade.API.Configuration
 {
@@ -24,7 +25,7 @@ namespace NStore.Identidade.API.Configuration
 
             app.UseRouting();
 
-            app.UseIdentityConfiguration();
+            app.UseAuthConfiguration();
 
             app.UseEndpoints(endpoints =>
             {

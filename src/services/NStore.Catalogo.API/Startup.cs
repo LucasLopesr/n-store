@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NStore.Catalogo.API.Configuration;
+using NStore.WebApi.Core.Identidade;
 
 namespace NStore.Catalogo.API
 {
@@ -17,8 +18,8 @@ namespace NStore.Catalogo.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddApiConfiguration(Configuration);
+            services.AddJwtConfiguration(Configuration);
             services.AddSwaggerConfiguration();
             services.RegisterServices();
 

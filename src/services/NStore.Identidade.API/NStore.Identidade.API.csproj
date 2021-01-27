@@ -23,6 +23,10 @@
 	<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\building blocks\NStore.WebApi.Core\NStore.WebApi.Core.csproj" />
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
