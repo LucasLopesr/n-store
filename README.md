@@ -7,6 +7,9 @@
 * EntityFrameworkCore
 * Jwt
 
+
+
+
 # N-Store
 ## N-Store é um e-commerce para fins didáticos, implementando uma arquitetura distribuída
 
@@ -15,3 +18,4 @@
 * IdentityCore
 * EntityFrameworkCore
 * Jwt
+* 
