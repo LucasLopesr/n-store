@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using NStore.WebApp.MVC.Extensions;
 using NStore.WebApp.MVC.Services;
+using NStore.WebApp.MVC.Services.Handlers;
 
 namespace NStore.WebApp.MVC.Configuration
 {
@@ -9,10 +10,13 @@ namespace NStore.WebApp.MVC.Configuration
     {
         public static void RegisterServices(this IServiceCollection services) 
         {
-            services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
-            services.AddHttpClient<ICatalogoService, CatalogoService>();
+            services.AddTransient<HttpClientAutorizationDelegatingHandler>();
 
+            services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
+            services.AddHttpClient<ICatalogoService, CatalogoService>().AddHttpMessageHandler<HttpClientAutorizationDelegatingHandler>();
+            
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            
             services.AddScoped<IUser, AspNetUser>();
         }
     }
