@@ -6,7 +6,8 @@
 * IdentityCore
 * EntityFrameworkCore
 * Jwt
-
+* Polly
+* Refit
 
 
 
@@ -18,4 +19,6 @@
 * IdentityCore
 * EntityFrameworkCore
 * Jwt
+* Polly
+* Refit
 
