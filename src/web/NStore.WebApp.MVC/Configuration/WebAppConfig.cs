@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NStore.WebApp.MVC.CustomExceptions;
 using NStore.WebApp.MVC.Extensions;
+using System.Globalization;
 
 namespace NStore.WebApp.MVC.Configuration
 {
@@ -41,6 +43,14 @@ namespace NStore.WebApp.MVC.Configuration
 
             app.UseRouting();
             app.UseIdentityConfiguration();
+
+            var supportedCultures = new[] { new CultureInfo("pt-BR") };
+            app.UseRequestLocalization(new RequestLocalizationOptions 
+            {
+                DefaultRequestCulture = new RequestCulture("pt-BR"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
 
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseEndpoints(endpoints =>
