@@ -14,6 +14,17 @@ namespace NStore.WebApp.MVC.Controllers
         {
             return View();
         }
+        [Route("sistema-indisponivel")]
+        public IActionResult SistemaIndisponivel()
+        {
+            var modelError = new ErrorViewModel
+            {
+                ErroCode = 500,
+                Titulo = "Sistema indisponivel",
+                Mensagem = "O sistema está temporariamente indisponível, isto pode ocorrer em momentos de sobrecarga."
+            };
+            return View("Error", modelError);
+        }
 
         [Route("erro/{id:length(3,3)}")]
         public IActionResult Error(int id)

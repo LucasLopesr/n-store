@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Polly.CircuitBreaker;
 using Refit;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,15 @@ namespace NStore.WebApp.MVC.CustomExceptions
             {
                 HandleRequestExceptionAsync(httpContext, ex.StatusCode);
             }
+            catch (BrokenCircuitException)
+            {
+                HandleCircuitBreakerExceptionAsync(httpContext);
+            }
+        }
+
+        private static void HandleCircuitBreakerExceptionAsync(HttpContext context) 
+        {
+            context.Response.Redirect("/sistema-indisponivel");
         }
 
         private static void HandleRequestExceptionAsync(HttpContext httpContext, HttpStatusCode statusCode) 
