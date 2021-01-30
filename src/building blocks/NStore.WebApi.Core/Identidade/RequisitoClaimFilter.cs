@@ -15,7 +15,7 @@ namespace NStore.WebApi.Core.Identidade
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            if (context.HttpContext.User.Identity.IsAuthenticated) 
+            if (!context.HttpContext.User.Identity.IsAuthenticated) 
             {
                 context.Result = new StatusCodeResult(401);
             }

@@ -25,6 +25,8 @@ namespace NStore.Catalogo.API.Configuration
                         .AllowAnyMethod()
                         .AllowAnyHeader());
             });
+
+            
             return services;
         }
 

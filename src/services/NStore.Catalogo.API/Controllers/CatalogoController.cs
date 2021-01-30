@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace NStore.Catalogo.API.Controllers
 {
     [ApiController]
-    [Authorize]
+    // [Authorize]
     public class CatalogoController : Controller
     {
         private readonly IProdutoRepository produtoRepository;

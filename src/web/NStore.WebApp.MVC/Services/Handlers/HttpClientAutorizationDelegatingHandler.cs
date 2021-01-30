@@ -19,7 +19,7 @@ namespace NStore.WebApp.MVC.Services.Handlers
             this.user = user;
         }
 
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) 
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var authorizationHeader = user.ObterHttpContext().Request.Headers["Authorization"];
             if (!string.IsNullOrEmpty(authorizationHeader))
@@ -29,16 +29,12 @@ namespace NStore.WebApp.MVC.Services.Handlers
 
             var token = user.ObterUserToken();
 
-            if (!string.IsNullOrWhiteSpace(token)) 
+            if (!string.IsNullOrWhiteSpace(token))
             {
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
             }
 
             return base.SendAsync(request, cancellationToken);
-        }
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
         }
     }
 }

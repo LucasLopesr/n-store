@@ -36,7 +36,7 @@ namespace NStore.Catalogo.API.Configuration
                             }
                         },
                         new string[] {}
-                    } 
+                    }
                 });
             });
 

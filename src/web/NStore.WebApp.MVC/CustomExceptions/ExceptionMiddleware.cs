@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Refit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,19 +25,23 @@ namespace NStore.WebApp.MVC.CustomExceptions
             }
             catch (CustomHttpRequestException cx) 
             {
-                HandlwRequestExceptionAsync(httpContext, cx);
+                HandleRequestExceptionAsync(httpContext, cx.StatusCode);
+            }
+            catch (ApiException ex)
+            {
+                HandleRequestExceptionAsync(httpContext, ex.StatusCode);
             }
         }
 
-        private static void HandlwRequestExceptionAsync(HttpContext httpContext, CustomHttpRequestException httpRequestException) 
+        private static void HandleRequestExceptionAsync(HttpContext httpContext, HttpStatusCode statusCode) 
         { 
-            if (httpRequestException.StatusCode == HttpStatusCode.Unauthorized) 
+            if (statusCode == HttpStatusCode.Unauthorized) 
             {
                 httpContext.Response.Redirect($"/login?ReturnUrl={httpContext.Request.Path}");
                 return;
             }
 
-            httpContext.Response.StatusCode = (int)httpRequestException.StatusCode;
+            httpContext.Response.StatusCode = (int)statusCode;
 
         }
     }
