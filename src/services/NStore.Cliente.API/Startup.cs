@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using NStore.Cliente.API.Configuration;
+using NStore.WebApi.Core.Identidade;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,44 +18,42 @@ namespace NStore.Cliente.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public Startup(IHostEnvironment hostEnvironment)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(hostEnvironment.ContentRootPath)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
+                .AddEnvironmentVariables();
 
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
+            if (hostEnvironment.IsDevelopment())
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "NStore.Cliente.API", Version = "v1" });
-            });
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NStore.Cliente.API v1"));
+                builder.AddUserSecrets<Startup>();
             }
 
-            app.UseHttpsRedirection();
+            Configuration = builder.Build();
+        }
 
-            app.UseRouting();
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddApiConfiguration(Configuration);
 
-            app.UseAuthorization();
+            services.AddJwtConfiguration(Configuration);
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            services.AddSwaggerConfiguration();
+
+            // services.AddMediatR(typeof(Startup));
+
+            // services.RegisterServices();
+        }
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            app.UseSwaggerConfiguration(env);
+
+            app.UseApiConfiguration(env);
         }
     }
 }

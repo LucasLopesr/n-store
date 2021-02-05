@@ -45,7 +45,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Pedido.API", "src\se
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{6E2F6E1A-41B7-42E8-8E14-DA042AA17D00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.WebApi.Core", "src\building blocks\NStore.WebApi.Core\NStore.WebApi.Core.csproj", "{0F5DF3B4-E350-4CE8-9E2B-CDB772055A43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.WebApi.Core", "src\building blocks\NStore.WebApi.Core\NStore.WebApi.Core.csproj", "{0F5DF3B4-E350-4CE8-9E2B-CDB772055A43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
