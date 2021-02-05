@@ -7,5 +7,6 @@ namespace NStore.Cliente.API.Application.Commands
 {
     public class ClienteCommandHandler
     {
+
     }
 }
