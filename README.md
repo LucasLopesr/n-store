@@ -8,6 +8,7 @@
 * Jwt
 * Polly
 * Refit
+* Mediator
 
 
 
@@ -21,4 +22,5 @@
 * Jwt
 * Polly
 * Refit
+* Mediator
 

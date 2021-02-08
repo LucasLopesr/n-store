@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -44,7 +45,7 @@ namespace NStore.Cliente.API
 
             services.AddSwaggerConfiguration();
 
-            // services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(Startup));
 
             // services.RegisterServices();
         }
