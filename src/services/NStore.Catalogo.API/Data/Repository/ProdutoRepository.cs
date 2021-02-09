@@ -10,7 +10,7 @@ namespace NStore.Catalogo.API.Data.Repository
     public class ProdutoRepository : IProdutoRepository
     {
         private readonly CatalogoContext catalogoContext;
-        public IUnitOfWork UnityOfWork => catalogoContext;
+        public IUnitOfWork UnitOfWork => catalogoContext;
         public ProdutoRepository(CatalogoContext catalogoContext)
         {
             this.catalogoContext = catalogoContext;
