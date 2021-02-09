@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NStore.Core.Messages;
+using System;
+using System.Collections.Generic;
 
 namespace NStore.Core.DomainObjects
 {
@@ -6,6 +8,26 @@ namespace NStore.Core.DomainObjects
     {
         public Guid Id { get; set; }
 
+        private List<Event> notificacoes;
+        public IReadOnlyCollection<Event> Notificacoes => notificacoes?.AsReadOnly();
+
+        public void AdicionarEvento(Event evento) 
+        {
+            notificacoes = notificacoes ?? new List<Event>();
+            notificacoes.Add(evento);
+        }
+
+        public void RemoverEvento(Event evento) 
+        {
+            notificacoes?.Remove(evento);
+        }
+
+        public void LimparEventos() 
+        {
+            notificacoes?.Clear();
+        }
+
+        #region equals hashcode
         public override bool Equals(object obj)
         {
             var compareTo = obj as Entity;
@@ -37,5 +59,6 @@ namespace NStore.Core.DomainObjects
         {
             return $"{GetType().Name} [Id={Id}]";
         }
+        #endregion
     }
 }

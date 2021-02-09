@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using NStore.Cliente.API.Extensions;
 using NStore.Cliente.API.Models;
 using NStore.Core.Data;
+using NStore.Core.Mediator;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,9 +11,10 @@ namespace NStore.Cliente.API.Data
 {
     public class ClientesContext : DbContext, IUnitOfWork
     {
-
-        public ClientesContext(DbContextOptions<ClientesContext> options) : base(options)
+        private IMediatorHandler mediatorHandler;
+        public ClientesContext(DbContextOptions<ClientesContext> options, IMediatorHandler mediatorHandler) : base(options)
         {
+            this.mediatorHandler = mediatorHandler;
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             ChangeTracker.AutoDetectChangesEnabled = false;
         }
@@ -35,7 +39,10 @@ namespace NStore.Cliente.API.Data
 
         public async Task<bool> Commit()
         {
-            return await base.SaveChangesAsync() > 0;
+            var sucesso = await base.SaveChangesAsync() > 0;
+            if (sucesso) await mediatorHandler.PublicarEventos(this);
+
+            return sucesso;
         }
     }
 }
