@@ -16,13 +16,13 @@ namespace NStore.Core.DomainObjects
 
         public Email(string endereco)
         {
-            if (!ValidarEmail(endereco)) throw new DomainException("E-mail inválido");
+            if (!Validar(endereco)) throw new DomainException("E-mail inválido");
             Endereco = endereco;
         }
 
         protected Email() { }
 
-        public static bool ValidarEmail(string endereco) 
+        public static bool Validar(string endereco) 
         {
             var expressaoRegex = new Regex(@"\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}");
             return expressaoRegex.IsMatch(endereco);

@@ -18,5 +18,11 @@ namespace NStore.Cliente.API.Application.Commands
             Email = email;
             Cpf = cpf;
         }
+
+        public override bool EhValido()
+        {
+            ValidationResult = new RegistrarClienteValidation().Validate(this);
+            return ValidationResult.IsValid;
+        }
     }
 }
