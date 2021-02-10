@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NStore.Identidade.API.Extensions;
 using NStore.Identidade.API.Models;
+using NStore.WebApi.Core.Controllers;
 using NStore.WebApi.Core.Identidade;
 using System;
 using System.Collections.Generic;

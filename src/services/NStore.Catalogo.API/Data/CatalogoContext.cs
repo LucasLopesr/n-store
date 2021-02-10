@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation.Results;
+using Microsoft.EntityFrameworkCore;
 using NStore.Catalogo.API.Models;
 using NStore.Core.Data;
+using NStore.Core.Messages;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,6 +18,7 @@ namespace NStore.Catalogo.API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
+            Ignores(modelBuilder);
             SetarDefaulTypeVarchar(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogoContext).Assembly);
         }
@@ -33,6 +36,12 @@ namespace NStore.Catalogo.API.Data
         public async Task<bool> Commit()
         {
             return await base.SaveChangesAsync() > 0;
+        }
+
+        private void Ignores(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Ignore<ValidationResult>();
+            modelBuilder.Ignore<Event>();
         }
     }
 }

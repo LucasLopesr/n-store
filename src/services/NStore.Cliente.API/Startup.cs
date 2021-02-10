@@ -47,7 +47,7 @@ namespace NStore.Cliente.API
 
             services.AddMediatR(typeof(Startup));
 
-            // services.RegisterServices();
+            services.RegisterServices();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

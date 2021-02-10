@@ -1,9 +1,11 @@
-﻿using MediatR;
+﻿using FluentValidation.Results;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using NStore.Cliente.API.Extensions;
 using NStore.Cliente.API.Models;
 using NStore.Core.Data;
 using NStore.Core.Mediator;
+using NStore.Core.Messages;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,6 +30,7 @@ namespace NStore.Cliente.API.Data
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            Ignores(modelBuilder);
             foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
                 property.SetColumnType("varchar(100)");
 
@@ -43,6 +46,12 @@ namespace NStore.Cliente.API.Data
             if (sucesso) await mediatorHandler.PublicarEventos(this);
 
             return sucesso;
+        }
+
+        private void Ignores(ModelBuilder modelBuilder) 
+        {
+            modelBuilder.Ignore<ValidationResult>();
+            modelBuilder.Ignore<Event>();
         }
     }
 }

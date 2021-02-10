@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NStore.Identidade.API.Controllers
+namespace NStore.WebApi.Core.Controllers
 {
     [ApiController]
     public abstract class MainController : Controller
@@ -14,7 +15,7 @@ namespace NStore.Identidade.API.Controllers
             if (IsOperacaoValida())
                 return Ok(result);
 
-            return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]> 
+            return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
                 { "Mensagens", Erros.ToArray() }
             }));
@@ -25,10 +26,18 @@ namespace NStore.Identidade.API.Controllers
             return !Erros.Any();
         }
 
-        protected ActionResult CustomResponse(ModelStateDictionary modelState) 
+        protected ActionResult CustomResponse(ModelStateDictionary modelState)
         {
             var erros = modelState.Values.SelectMany(erro => erro.Errors);
             foreach (var erro in erros)
+                AddErroProcessamento(erro.ErrorMessage);
+
+            return CustomResponse();
+        }
+
+        protected ActionResult CustomResponse(ValidationResult validationResult)
+        {
+            foreach (var erro in validationResult.Errors)
                 AddErroProcessamento(erro.ErrorMessage);
 
             return CustomResponse();
