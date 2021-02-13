@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NStore.WebApp.MVC.Extensions;
+using NStore.WebApp.MVC.Extensions.Attributes;
 using NStore.WebApp.MVC.Services;
 using NStore.WebApp.MVC.Services.Handlers;
 using Polly;
@@ -13,6 +15,7 @@ namespace NStore.WebApp.MVC.Configuration
     {
         public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddSingleton<IValidationAttributeAdapterProvider, CpfValidationAttributeAdapterProvider>();
             services.AddTransient<HttpClientAutorizationDelegatingHandler>();
 
             services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
@@ -23,15 +26,19 @@ namespace NStore.WebApp.MVC.Configuration
                 .AddPolicyHandler(PollyExtensions.EsperarTentar())
                 .AddTransientHttpErrorPolicy(p => p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));;
 
-            //Exemplo de configuração do refit 
-            //services.AddHttpClient("Refit", options => {
-            //    options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
-            //}).AddHttpMessageHandler<HttpClientAutorizationDelegatingHandler>()
-            //.AddTypedClient(Refit.RestService.For<ICatalogoService>);
+
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<IUser, AspNetUser>();
+
+
+            #region Refit config
+            //services.AddHttpClient("Refit", options => {
+            //    options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
+            //}).AddHttpMessageHandler<HttpClientAutorizationDelegatingHandler>()
+            //.AddTypedClient(Refit.RestService.For<ICatalogoService>);
+            #endregion
         }
 
     }
