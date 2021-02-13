@@ -35,6 +35,8 @@ namespace NStore.Identidade.API
 
             services.AddSwaggerConfiguration();
 
+            services.AddMessageBusConfiguration(Configuration);
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

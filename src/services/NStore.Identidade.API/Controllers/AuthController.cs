@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using NStore.Core.Messages.Integration;
 using NStore.Identidade.API.Extensions;
 using NStore.Identidade.API.Models;
+using NStore.MessageBus;
 using NStore.WebApi.Core.Controllers;
 using NStore.WebApi.Core.Identidade;
 using System;
@@ -25,13 +27,17 @@ namespace NStore.Identidade.API.Controllers
         private readonly UserManager<IdentityUser> userManager;
         private readonly AppSettings appSettings;
 
+        private readonly IMessageBus messageBus;
+
         public AuthController(SignInManager<IdentityUser> signInManager, 
                               UserManager<IdentityUser> userManager, 
-                              IOptions<AppSettings> appSettings)
+                              IOptions<AppSettings> appSettings,
+                              IMessageBus messageBus)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.appSettings = appSettings.Value;
+            this.messageBus = messageBus;
         }
 
         [HttpPost("nova-conta")]
@@ -50,6 +56,15 @@ namespace NStore.Identidade.API.Controllers
 
             if (result.Succeeded) 
             {
+                var clienteResult = await RegistrarCliente(usuarioRegistro);
+
+                if (!clienteResult.ValidationResult.IsValid) 
+                {
+                    await userManager.DeleteAsync(usuario);
+
+                    return CustomResponse(clienteResult.ValidationResult);
+                }
+
                 return CustomResponse(await GerarJwt(usuarioRegistro.Email));
             }
 
@@ -142,6 +157,23 @@ namespace NStore.Identidade.API.Controllers
                     Claims = claims.Select(claim => new UsuarioClaim { Type = claim.Type, Value = claim.Value })
                 }
             };
+        }
+
+        private async Task<ResponseMessage> RegistrarCliente(UsuarioRegistroModel usuarioRegistro)
+        {
+            var usuario = await userManager.FindByEmailAsync(usuarioRegistro.Email);
+            var usuarioRegistrado = new UsuarioRegistradoIntegrationEvent(
+                Guid.Parse(usuario.Id), usuarioRegistro.Nome, usuarioRegistro.Email, usuarioRegistro.Cpf);
+
+            try
+            {
+                return await messageBus.RequestAsync<UsuarioRegistradoIntegrationEvent, ResponseMessage>(usuarioRegistrado);
+            } catch 
+            {
+                await userManager.DeleteAsync(usuario);
+                throw;
+            }
+
         }
     }
 }

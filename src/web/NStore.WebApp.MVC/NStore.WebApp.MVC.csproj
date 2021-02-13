@@ -45,4 +45,8 @@
     <PackageReference Include="Refit" Version="5.2.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\building blocks\NStore.Core\NStore.Core.csproj" />
+  </ItemGroup>
+
 </Project>

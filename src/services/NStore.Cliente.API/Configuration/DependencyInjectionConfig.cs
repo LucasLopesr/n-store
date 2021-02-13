@@ -6,6 +6,7 @@ using NStore.Cliente.API.Application.Events;
 using NStore.Cliente.API.Data;
 using NStore.Cliente.API.Data.Repository;
 using NStore.Cliente.API.Models;
+using NStore.Cliente.API.Services;
 using NStore.Core.Mediator;
 
 namespace NStore.Cliente.API.Configuration
@@ -21,6 +22,9 @@ namespace NStore.Cliente.API.Configuration
             services.AddScoped<INotificationHandler<ClienteRegistradoEvent>, ClienteEventHandler>();
 
             services.AddScoped<IClienteRepository, ClienteRepository>();
+
+
+            services.AddHostedService<RegistroClienteIntegrationHandler>();
             
         }
     }

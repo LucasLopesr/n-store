@@ -1,7 +1,7 @@
 # N-Store 
 ## N-Store is a e-commerce with didactic purposes, implementing a distributed architecture.
 
-# Technologies used
+# Technologies used 
 * .NET 5.0
 * IdentityCore
 * EntityFrameworkCore
@@ -9,18 +9,13 @@
 * Polly
 * Refit
 * MediatR
+* RabbitMQ
+* EasyNetMQ
 
 
 
-# N-Store
-## N-Store é um e-commerce para fins didáticos, implementando uma arquitetura distribuída
+## Run command to install and run container RabbitMQ 
 
-# Tecnologias utilizadas
-* .NET 5.0
-* IdentityCore
-* EntityFrameworkCore
-* Jwt
-* Polly
-* Refit
-* MediatR
-
+`
+	docker run -d --hostname rabbit-host --name rabbit-nstore -p 15672:15672 -p 5672:5672 rabbitmq:management
+`
