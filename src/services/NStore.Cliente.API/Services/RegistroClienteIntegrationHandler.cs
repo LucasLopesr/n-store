@@ -23,12 +23,22 @@ namespace NStore.Cliente.API.Services
             this.bus = bus;
         }
 
+        private void SetResponder()
+        {
+            bus.RespondAsync<UsuarioRegistradoIntegrationEvent, ResponseMessage>(async request => await RegistrarCliente(request));
+            bus.AdvancedBus.Connected += OnConnect;
+        }
+
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-
-            bus.RespondAsync<UsuarioRegistradoIntegrationEvent, ResponseMessage>(async request => await RegistrarCliente(request));
+            SetResponder();
 
             return Task.CompletedTask;
+        }
+
+        private void OnConnect(object sender, EventArgs eventArgs)
+        {
+            SetResponder();
         }
 
         private async Task<ResponseMessage> RegistrarCliente(UsuarioRegistradoIntegrationEvent message)
