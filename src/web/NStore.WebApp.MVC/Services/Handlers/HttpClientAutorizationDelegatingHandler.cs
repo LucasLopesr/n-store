@@ -1,5 +1,6 @@
 ﻿
 
+using NStore.WebApi.Core.Usuario;
 using NStore.WebApp.MVC.Extensions;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -12,9 +13,9 @@ namespace NStore.WebApp.MVC.Services.Handlers
     public class HttpClientAutorizationDelegatingHandler : DelegatingHandler
     {
 
-        private readonly IUser user;
+        private readonly IAspNetUser user;
 
-        public HttpClientAutorizationDelegatingHandler(IUser user)
+        public HttpClientAutorizationDelegatingHandler(IAspNetUser user)
         {
             this.user = user;
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Claims;
 
-namespace NStore.WebApp.MVC.Extensions
+namespace NStore.WebApi.Core.Extensions
 {
     public static class ClaimsPrincipalExtensions
     {

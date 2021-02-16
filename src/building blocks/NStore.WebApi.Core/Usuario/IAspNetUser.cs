@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace NStore.WebApp.MVC.Extensions
+namespace NStore.WebApi.Core.Usuario
 {
-    public interface IUser
+    public interface IAspNetUser
     {
         string Name { get; }
         Guid ObterUserId();

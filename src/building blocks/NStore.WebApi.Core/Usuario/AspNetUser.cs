@@ -1,11 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http;
+using NStore.WebApi.Core.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace NStore.WebApp.MVC.Extensions
+namespace NStore.WebApi.Core.Usuario
 {
-    public class AspNetUser : IUser
+    public class AspNetUser : IAspNetUser
     {
         private readonly IHttpContextAccessor accessor;
 
@@ -50,6 +54,7 @@ namespace NStore.WebApp.MVC.Extensions
         {
             return accessor.HttpContext.User.IsInRole(role);
         }
+
     }
-    
+
 }

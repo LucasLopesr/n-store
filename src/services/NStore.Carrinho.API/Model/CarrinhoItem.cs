@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using NStore.Carrinho.API.Model.Validations;
+using System;
 
 namespace NStore.Carrinho.API.Model
 {
@@ -18,6 +16,31 @@ namespace NStore.Carrinho.API.Model
         public CarrinhoItem()
         {
             Id = Guid.NewGuid();
+        }
+
+        internal void AssociarCarrinho(Guid carrinhoId)
+        {
+            CarrinhoId = carrinhoId;
+        }
+
+        internal decimal CalcularValor()
+        {
+            return Quantidade * Valor;
+        }
+
+        internal void AdicionarUnidades(int unidades)
+        {
+            Quantidade += unidades;
+        }
+
+        internal bool EhValido()
+        {
+            return new ItemPedidoValidation().Validate(this).IsValid;
+        }
+
+        internal void AtualizarUnidades(int unidades)
+        {
+            Quantidade = unidades;
         }
     }
 }

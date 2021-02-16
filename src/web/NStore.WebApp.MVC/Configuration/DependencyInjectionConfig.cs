@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NStore.WebApi.Core.Usuario;
 using NStore.WebApp.MVC.Extensions;
 using NStore.WebApp.MVC.Extensions.Attributes;
 using NStore.WebApp.MVC.Services;
@@ -30,7 +31,7 @@ namespace NStore.WebApp.MVC.Configuration
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddScoped<IUser, AspNetUser>();
+            services.AddScoped<IAspNetUser, AspNetUser>();
 
 
             #region Refit config

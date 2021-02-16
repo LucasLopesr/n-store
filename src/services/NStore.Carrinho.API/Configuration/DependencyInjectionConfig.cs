@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using NStore.Carrinho.API.Data;
+using NStore.WebApi.Core.Usuario;
 
 namespace NStore.Carrinho.API.Configuration
 {
@@ -10,7 +9,9 @@ namespace NStore.Carrinho.API.Configuration
     {
         public static void RegisterServices(this IServiceCollection services)
         {
-
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IAspNetUser, AspNetUser>();
+            services.AddScoped<CarrinhoContext>();
 
         }
     }

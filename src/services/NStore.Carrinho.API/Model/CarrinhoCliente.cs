@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NStore.Carrinho.API.Model
 {
@@ -16,5 +17,64 @@ namespace NStore.Carrinho.API.Model
             ClienteId = clienteId;
         }
         public CarrinhoCliente() { }
+        internal void CalcularValorCarrinho()
+        {
+            ValorTotal = Itens.Sum(item => item.CalcularValor());
+        }
+
+        internal CarrinhoItem ObterPorProdutoId(Guid produtoId)
+        {
+            return Itens.FirstOrDefault(item => item.ProdutoId == produtoId);
+        }
+
+        internal bool CarrinhoItemExistente(CarrinhoItem item)
+        {
+            return Itens.Any(i => i.ProdutoId == item.ProdutoId);
+        }
+
+        internal void AdicionarItem(CarrinhoItem item)
+        {
+            if (!item.EhValido()) return;
+
+            item.AssociarCarrinho(Id);
+            
+            if (CarrinhoItemExistente(item))
+            {
+                var itemExistente = ObterPorProdutoId(item.ProdutoId);
+                itemExistente.AdicionarUnidades(item.Quantidade);
+
+                item = itemExistente;
+                Itens.Remove(itemExistente);
+            }
+
+            Itens.Add(item);
+            
+            CalcularValorCarrinho();
+        }
+
+        internal void AtualizarItem(CarrinhoItem item)
+        {
+            if (!item.EhValido()) return;
+
+            item.AssociarCarrinho(Id);
+            var itemExistente = ObterPorProdutoId(item.ProdutoId);
+            Itens.Remove(itemExistente);
+            Itens.Add(item);
+
+            CalcularValorCarrinho();
+        }
+
+        internal void AtualizarUnidades(CarrinhoItem item, int unidades)
+        {
+            item.AtualizarUnidades(unidades);
+            AtualizarItem(item);
+        }
+        internal void RemoverItem(CarrinhoItem item)
+        {
+            Itens.Remove(ObterPorProdutoId(item.ProdutoId));
+
+            CalcularValorCarrinho();
+        }
+
     }
 }
