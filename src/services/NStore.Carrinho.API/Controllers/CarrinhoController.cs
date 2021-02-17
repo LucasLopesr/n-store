@@ -6,6 +6,7 @@ using NStore.Carrinho.API.Model;
 using NStore.WebApi.Core.Controllers;
 using NStore.WebApi.Core.Usuario;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace NStore.Carrinho.API.Controllers
@@ -38,6 +39,7 @@ namespace NStore.Carrinho.API.Controllers
             else 
                 ManipularCarrinhoExistente(carrinho, item);
 
+            ValidarCarrinho(carrinho);
             if (!IsOperacaoValida()) return CustomResponse();
 
             await PersistirDados();
@@ -56,6 +58,9 @@ namespace NStore.Carrinho.API.Controllers
 
             carrinho.AtualizarUnidades(item, item.Quantidade);
 
+            ValidarCarrinho(carrinho);
+            if (!IsOperacaoValida()) return CustomResponse();
+
             context.CarrinhoItens.Update(itemCarrinho);
             context.CarrinhoCliente.Update(carrinho);
 
@@ -71,6 +76,9 @@ namespace NStore.Carrinho.API.Controllers
 
             var itemCarrinho = await ObterItemCarrinhoValidado(produtoId, carrinho);
             if (itemCarrinho == null) return CustomResponse();
+
+            ValidarCarrinho(carrinho);
+            if (!IsOperacaoValida()) return CustomResponse();
 
             carrinho.RemoverItem(itemCarrinho);
             context.CarrinhoItens.Remove(itemCarrinho);
@@ -136,6 +144,16 @@ namespace NStore.Carrinho.API.Controllers
         {
             var result = await context.SaveChangesAsync();
             if (result <= 0) AddErroProcessamento("Não foi possível persistir os dados no banco");
+        }
+
+        private bool ValidarCarrinho(CarrinhoCliente carrinho)
+        {
+            if (carrinho.EhValido()) return true;
+
+            carrinho.ValidationResult.Errors.ToList()
+                .ForEach(erro => AddErroProcessamento(erro.ErrorMessage));
+
+            return false;
         }
     }
 }

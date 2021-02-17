@@ -35,7 +35,7 @@ namespace NStore.Carrinho.API.Model
 
         internal bool EhValido()
         {
-            return new ItemPedidoValidation().Validate(this).IsValid;
+            return new ItemCarrinhoValidation().Validate(this).IsValid;
         }
 
         internal void AtualizarUnidades(int unidades)

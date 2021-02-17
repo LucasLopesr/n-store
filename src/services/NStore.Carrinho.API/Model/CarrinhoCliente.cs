@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FluentValidation.Results;
+using NStore.Carrinho.API.Model.Validations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,6 +12,7 @@ namespace NStore.Carrinho.API.Model
         public Guid ClienteId { get; set; }
         public decimal ValorTotal { get; set; }
         public List<CarrinhoItem> Itens { get; set; } = new List<CarrinhoItem>();
+        public ValidationResult ValidationResult { get; set; }
 
         public CarrinhoCliente(Guid clienteId)
         {
@@ -17,6 +20,17 @@ namespace NStore.Carrinho.API.Model
             ClienteId = clienteId;
         }
         public CarrinhoCliente() { }
+
+        internal bool EhValido()
+        {
+            var itemValidator = new ItemCarrinhoValidation();
+            var erros = Itens.SelectMany(item => itemValidator.Validate(item).Errors).ToList();
+            erros.AddRange(new CarrinhoClienteValidation().Validate(this).Errors);
+
+            ValidationResult = new ValidationResult(erros);
+            return ValidationResult.IsValid;
+        }
+
         internal void CalcularValorCarrinho()
         {
             ValorTotal = Itens.Sum(item => item.CalcularValor());
@@ -34,8 +48,6 @@ namespace NStore.Carrinho.API.Model
 
         internal void AdicionarItem(CarrinhoItem item)
         {
-            if (!item.EhValido()) return;
-
             item.AssociarCarrinho(Id);
             
             if (CarrinhoItemExistente(item))
@@ -54,8 +66,6 @@ namespace NStore.Carrinho.API.Model
 
         internal void AtualizarItem(CarrinhoItem item)
         {
-            if (!item.EhValido()) return;
-
             item.AssociarCarrinho(Id);
             var itemExistente = ObterPorProdutoId(item.ProdutoId);
             Itens.Remove(itemExistente);

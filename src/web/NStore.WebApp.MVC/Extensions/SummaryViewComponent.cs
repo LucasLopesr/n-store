@@ -7,7 +7,7 @@ namespace NStore.WebApp.MVC.Extensions
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
+            return View(await Task.FromResult(0));
         }
     }
 }
