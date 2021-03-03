@@ -19,14 +19,14 @@ namespace NStore.Catalogo.API.Controllers
         {
             this.produtoRepository = produtoRepository;
         }
-        [AllowAnonymous]
+
         [HttpGet("catalogo/produtos")]
         public async Task<IEnumerable<Produto>> Produtos() 
         {
             return await produtoRepository.ObterTodos();
         }
 
-        [ClaimsAuthorize("Catalogo","Ler")]
+
         [HttpGet("catalogo/produtos/{id}")]
         public async Task<Produto> ProdutoDetalhe(Guid id)
         {

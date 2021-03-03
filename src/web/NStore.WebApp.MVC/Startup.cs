@@ -18,10 +18,6 @@ namespace NStore.WebApp.MVC
                 .AddJsonFile(path: "appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile(path: $"appsettings.{hostEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
-            if (hostEnvironment.IsDevelopment())
-            {
-                buider.AddUserSecrets<Startup>();
-            }
 
             Configuration = buider.Build();
         }

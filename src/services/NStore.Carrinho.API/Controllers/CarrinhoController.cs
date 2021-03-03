@@ -93,6 +93,7 @@ namespace NStore.Carrinho.API.Controllers
         {
             var carrinho = new CarrinhoCliente(user.ObterUserId());
             carrinho.AdicionarItem(item);
+            ValidarCarrinho(carrinho);
             context.CarrinhoCliente.Add(carrinho);
         }
 
@@ -101,6 +102,7 @@ namespace NStore.Carrinho.API.Controllers
             var produtoItemExistente = carrinho.CarrinhoItemExistente(item);
 
             carrinho.AdicionarItem(item);
+            ValidarCarrinho(carrinho);
             if (produtoItemExistente)
             {
                 context.CarrinhoItens.Update(carrinho.ObterPorProdutoId(item.ProdutoId));

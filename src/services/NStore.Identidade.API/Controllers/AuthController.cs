@@ -107,18 +107,18 @@ namespace NStore.Identidade.API.Controllers
             return ObterRespostaToken(encodedToken, usuario, claims);
         }
 
-        private async Task<ClaimsIdentity> ObterClaimsUsuario(ICollection<Claim> claims, IdentityUser usuario) 
+        private async Task<ClaimsIdentity> ObterClaimsUsuario(ICollection<Claim> claims, IdentityUser user)
         {
-            var usuarioRoles = await userManager.GetRolesAsync(usuario);
-            claims.Add(new Claim(JwtRegisteredClaimNames.Sub, usuario.Id));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Email, usuario.Email));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, DateTime.UtcNow.ToEpochDate().ToString()));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToEpochDate().ToString(), ClaimValueTypes.Integer64));
+            var userRoles = await userManager.GetRolesAsync(user);
 
-            foreach (var role in usuarioRoles)
+            claims.Add(new Claim(JwtRegisteredClaimNames.Sub, user.Id));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString()));
+            claims.Add(new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.UtcNow).ToString(), ClaimValueTypes.Integer64));
+            foreach (var userRole in userRoles)
             {
-                claims.Add(new Claim("role", role));
+                claims.Add(new Claim("role", userRole));
             }
 
             var identityClaims = new ClaimsIdentity();
@@ -127,11 +127,15 @@ namespace NStore.Identidade.API.Controllers
             return identityClaims;
         }
 
-        private string CodificarToken(ClaimsIdentity identityClaims) 
+        private object ToUnixEpochDate(DateTime utcNow)
+        {
+            return (long)Math.Round((utcNow.ToUniversalTime() - new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero)).TotalSeconds);
+        }
+
+        private string CodificarToken(ClaimsIdentity identityClaims)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
-
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
             {
                 Issuer = appSettings.Emissor,
@@ -154,7 +158,7 @@ namespace NStore.Identidade.API.Controllers
                 {
                     Id = usuario.Id,
                     Email = usuario.Email,
-                    Claims = claims.Select(claim => new UsuarioClaim { Type = claim.Type, Value = claim.Value })
+                    Claims = claims.Select(c => new UsuarioClaim { Type = c.Type, Value = c.Value })
                 }
             };
         }

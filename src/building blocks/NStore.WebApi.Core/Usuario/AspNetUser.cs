@@ -54,7 +54,5 @@ namespace NStore.WebApi.Core.Usuario
         {
             return accessor.HttpContext.User.IsInRole(role);
         }
-
     }
-
 }

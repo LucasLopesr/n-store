@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System.Collections.Generic;
 using System.Text;
 
 namespace NStore.WebApi.Core.Identidade
@@ -38,12 +37,10 @@ namespace NStore.WebApi.Core.Identidade
                 };
             });
         }
-        public static IApplicationBuilder UseAuthConfiguration(this IApplicationBuilder app)
+        public static void UseAuthConfiguration(this IApplicationBuilder app)
         {
-            app.UseAuthorization();
             app.UseAuthentication();
-
-            return app;
+            app.UseAuthorization();
         }
     }
 }
