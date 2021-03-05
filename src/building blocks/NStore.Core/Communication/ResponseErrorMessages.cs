@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-
-namespace NStore.WebApp.MVC.Models.Errors
+namespace NStore.Core.Communication
 {
     public class ResponseErrorMessages
     {

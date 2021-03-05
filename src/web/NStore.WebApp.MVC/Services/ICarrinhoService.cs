@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using NStore.Core.Communication;
 using NStore.WebApp.MVC.Models;
-using NStore.WebApp.MVC.Models.Errors;
 
 namespace NStore.WebApp.MVC.Services
 {

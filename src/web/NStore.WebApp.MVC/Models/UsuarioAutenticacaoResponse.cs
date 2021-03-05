@@ -1,4 +1,4 @@
-﻿using NStore.WebApp.MVC.Models.Errors;
+﻿using NStore.Core.Communication;
 
 namespace NStore.WebApp.MVC.Models
 {

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using NStore.WebApp.MVC.Extensions;
 using NStore.WebApp.MVC.Models;
-using NStore.WebApp.MVC.Models.Errors;
+using NStore.Core.Communication;
 
 namespace NStore.WebApp.MVC.Services
 {

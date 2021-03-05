@@ -1,5 +1,5 @@
 ﻿
-namespace NStore.WebApp.MVC.Models.Errors
+namespace NStore.Core.Communication
 {
     public class ResponseResult
     {

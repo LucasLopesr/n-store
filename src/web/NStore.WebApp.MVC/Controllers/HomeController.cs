@@ -17,7 +17,7 @@ namespace NStore.WebApp.MVC.Controllers
         [Route("sistema-indisponivel")]
         public IActionResult SistemaIndisponivel()
         {
-            var modelError = new ErrorViewModel
+            var modelError = new ErrorViewModel()
             {
                 ErroCode = 500,
                 Titulo = "Sistema indisponivel",

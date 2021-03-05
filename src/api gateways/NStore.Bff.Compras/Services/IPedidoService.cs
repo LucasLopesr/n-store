@@ -1,4 +1,4 @@
-﻿namespace NStore.WebApp.MVC.Services
+﻿namespace NStore.Bff.Compras.Services
 {
     public interface IPedidoService
     {

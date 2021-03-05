@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NStore.WebApp.MVC.Models.Errors;
+using NStore.Core.Communication;
 using System.Linq;
 
 namespace NStore.WebApp.MVC.Controllers

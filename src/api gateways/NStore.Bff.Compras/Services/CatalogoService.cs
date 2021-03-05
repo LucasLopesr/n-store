@@ -3,13 +3,13 @@ using NStore.Bff.Compras.Extensions;
 using System;
 using System.Net.Http;
 
-namespace NStore.WebApp.MVC.Services
+namespace NStore.Bff.Compras.Services
 {
-    public class CarrinhoService : Service, ICarrinhoService
+    public class CatalogoService : Service, ICatalogoService
     {
         private readonly HttpClient httpClient;
 
-        public CarrinhoService(HttpClient httpClient,
+        public CatalogoService(HttpClient httpClient,
                                    IOptions<AppServicesSettings> appSettings)
         {
             httpClient.BaseAddress = new Uri(appSettings.Value.CatalogoUrl);

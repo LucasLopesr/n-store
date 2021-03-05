@@ -3,7 +3,7 @@ using NStore.Bff.Compras.Extensions;
 using System;
 using System.Net.Http;
 
-namespace NStore.WebApp.MVC.Services
+namespace NStore.Bff.Compras.Services
 {
     public class PedidoService : Service, IPedidoService
     {

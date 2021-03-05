@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
+using NStore.Core.Communication;
 using NStore.WebApp.MVC.Extensions;
 using NStore.WebApp.MVC.Models;
-using NStore.WebApp.MVC.Models.Errors;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;

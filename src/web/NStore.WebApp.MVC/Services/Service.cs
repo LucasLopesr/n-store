@@ -1,5 +1,5 @@
 ﻿using NStore.WebApp.MVC.CustomExceptions;
-using NStore.WebApp.MVC.Models.Errors;
+using NStore.Core.Communication;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;

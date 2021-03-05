@@ -1,10 +1,11 @@
-﻿using System.Net;
+﻿using NStore.Core.Communication;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace NStore.WebApp.MVC.Services
+namespace NStore.Bff.Compras.Services
 {
     public abstract class Service
     {
@@ -32,6 +33,11 @@ namespace NStore.WebApp.MVC.Services
             if (response.StatusCode == HttpStatusCode.BadRequest) return false;
             response.EnsureSuccessStatusCode();
             return true;
+        }
+
+        protected ResponseResult RetornoOk()
+        {
+            return new ResponseResult();
         }
     }
 }

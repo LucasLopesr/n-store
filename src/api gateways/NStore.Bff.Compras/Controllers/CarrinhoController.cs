@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NStore.Bff.Compras.Services;
 using NStore.WebApi.Core.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace NStore.Bff.Compras.Controllers
@@ -11,6 +9,17 @@ namespace NStore.Bff.Compras.Controllers
     [Authorize]
     public class CarrinhoController : MainController
     {
+        private readonly ICarrinhoService carrinhoService;
+        private readonly ICatalogoService catalogoService;
+
+        public CarrinhoController(
+            ICarrinhoService carrinhoService, 
+            ICatalogoService catalogoService)
+        {
+            this.catalogoService = catalogoService;
+            this.carrinhoService = carrinhoService;
+        }
+
         [HttpGet]
         [Route("compras/carrinho")]
         public async Task<IActionResult> Index()
