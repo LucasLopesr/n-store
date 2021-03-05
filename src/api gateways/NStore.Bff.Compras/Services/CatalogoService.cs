@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Options;
 using NStore.Bff.Compras.Extensions;
+using NStore.Bff.Compras.Models;
 using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace NStore.Bff.Compras.Services
 {
@@ -15,6 +17,12 @@ namespace NStore.Bff.Compras.Services
             httpClient.BaseAddress = new Uri(appSettings.Value.CatalogoUrl);
             this.httpClient = httpClient;
         }
-        
+
+        public async Task<ItemProdutoDTO> ObterPorId(Guid id)
+        {
+            var response = await httpClient.GetAsync($"/catalogo/produtos/{id}");
+            TratarErrosResponse(response);
+            return await DeserializarObjetoResponse<ItemProdutoDTO>(response);
+        }
     }
 }

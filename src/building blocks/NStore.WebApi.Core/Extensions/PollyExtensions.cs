@@ -5,7 +5,7 @@ using System;
 using System.Net.Http;
 
 
-namespace NStore.WebApp.MVC.Extensions
+namespace NStore.WebApi.Core.Extensions
 {
     public class PollyExtensions
     {
