@@ -1,5 +1,4 @@
-﻿using NStore.WebApp.MVC.CustomExceptions;
-using NStore.WebApp.MVC.Models.Errors;
+﻿using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -29,25 +28,10 @@ namespace NStore.WebApp.MVC.Services
 
         protected bool TratarErrosResponse(HttpResponseMessage response)
         {
-            switch ((int)response.StatusCode)
-            {
-                case 401:
-                case 403:
-                case 404:
-                case 500:
-                    throw new CustomHttpRequestException(response.StatusCode);
 
-                case 400:
-                    return false;
-            }
-
+            if (response.StatusCode == HttpStatusCode.BadRequest) return false;
             response.EnsureSuccessStatusCode();
             return true;
-        }
-
-        protected ResponseResult RetornoOk()
-        {
-            return new ResponseResult();
         }
     }
 }
