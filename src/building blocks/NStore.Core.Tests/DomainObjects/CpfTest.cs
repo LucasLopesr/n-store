@@ -22,13 +22,13 @@ namespace NStore.Core.Tests.DomainObjects
 		[Trait("Categoria", "Testes de CPF")]
 		public void Validar_CpfInvalido_DeveGerarException()
 		{
-
+			//Arrange
 			//Act
-
-			var ex = Assert.Throws<DomainException>(() => new Cpf("12332154544"));
-
 			//Assert
-			Assert.Equal("Cpf inválido", ex.Message);
+			var ex = Assert.Throws<DomainException>(
+				() => new Cpf("12332154544"));
+
+			
 		}
 	}
 }
