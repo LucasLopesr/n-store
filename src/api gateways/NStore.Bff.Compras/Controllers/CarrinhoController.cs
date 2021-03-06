@@ -34,8 +34,7 @@ namespace NStore.Bff.Compras.Controllers
         [Route("compras/carrinho-quantidade")]
         public async Task<int> ObterQuantidadeCarrinho()
         {
-            var carrinho = await carrinhoService.ObterCarrinho();
-            return carrinho?.Itens.Sum(i => i.Quantidade) ?? 0;
+            return await carrinhoService.ObterQuantidadeCarrinho();
         }
 
         [HttpPost]

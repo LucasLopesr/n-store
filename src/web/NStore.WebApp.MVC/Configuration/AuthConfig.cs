@@ -6,24 +6,20 @@ namespace NStore.WebApp.MVC.Configuration
 {
     public static class AuthConfig
     {
-        public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services)
+        public static void AddIdentityConfiguration(this IServiceCollection services)
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => 
+                .AddCookie(options =>
                 {
                     options.LoginPath = "/login";
-                    options.AccessDeniedPath = "/acesso-negado";
+                    options.AccessDeniedPath = "/erro/403";
                 });
-
-            return services;
         }
 
-        public static IApplicationBuilder UseIdentityConfiguration(this IApplicationBuilder app)
+        public static void UseIdentityConfiguration(this IApplicationBuilder app)
         {
-            app.UseAuthorization();
             app.UseAuthentication();
-
-            return app;
+            app.UseAuthorization();
         }
     }
 }

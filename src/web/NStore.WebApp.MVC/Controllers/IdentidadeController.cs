@@ -42,7 +42,7 @@ namespace NStore.WebApp.MVC.Controllers
             }
 
             await RealizarLogin(resposta);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Catalogo");
         }
 
         [HttpGet]
@@ -59,7 +59,7 @@ namespace NStore.WebApp.MVC.Controllers
         public async Task<IActionResult> Logout()
         {
              await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Catalogo");
         }
     
         [HttpPost]
@@ -78,7 +78,7 @@ namespace NStore.WebApp.MVC.Controllers
 
             await RealizarLogin(resposta);
 
-            if (string.IsNullOrEmpty(returnUrl)) return RedirectToAction("Index", "Home");
+            if (string.IsNullOrEmpty(returnUrl)) return RedirectToAction("Index", "Catalogo");
             return LocalRedirect(returnUrl);
         }
 

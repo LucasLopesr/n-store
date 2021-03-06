@@ -22,10 +22,10 @@ namespace NStore.WebApp.MVC.Configuration
 
         public static IApplicationBuilder UseMvcConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseDeveloperExceptionPage();
+
             //if (env.IsDevelopment())
             //{
-            //    
+            //    //app.UseDeveloperExceptionPage();
             //}
             //else
             //{

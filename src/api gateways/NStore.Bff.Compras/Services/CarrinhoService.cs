@@ -3,6 +3,7 @@ using NStore.Bff.Compras.Extensions;
 using NStore.Bff.Compras.Models;
 using NStore.Core.Communication;
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace NStore.Bff.Compras.Services
         public CarrinhoService(HttpClient httpClient,
                                    IOptions<AppServicesSettings> appSettings)
         {
-            httpClient.BaseAddress = new Uri(appSettings.Value.CatalogoUrl);
+            httpClient.BaseAddress = new Uri(appSettings.Value.CarrinhoUrl);
             this.httpClient = httpClient;
         }
 
@@ -57,6 +58,13 @@ namespace NStore.Bff.Compras.Services
             if (!TratarErrosResponse(response)) return await DeserializarObjetoResponse<ResponseResult>(response);
 
             return RetornoOk();
+        }
+
+        public async Task<int> ObterQuantidadeCarrinho()
+        {
+            var carrinho = await ObterCarrinho();
+
+            return carrinho?.Itens.Sum(i => i.Quantidade) ?? 0;
         }
     }
 }

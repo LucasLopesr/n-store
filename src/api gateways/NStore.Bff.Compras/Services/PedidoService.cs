@@ -12,7 +12,7 @@ namespace NStore.Bff.Compras.Services
         public PedidoService(HttpClient httpClient,
                                    IOptions<AppServicesSettings> appSettings)
         {
-            httpClient.BaseAddress = new Uri(appSettings.Value.CatalogoUrl);
+            httpClient.BaseAddress = new Uri(appSettings.Value.PedidoUrl);
             this.httpClient = httpClient;
         }
         

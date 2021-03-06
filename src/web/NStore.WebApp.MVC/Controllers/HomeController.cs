@@ -5,15 +5,6 @@ namespace NStore.WebApp.MVC.Controllers
 {
     public class HomeController : MainController
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
         [Route("sistema-indisponivel")]
         public IActionResult SistemaIndisponivel()
         {
