@@ -1,5 +1,6 @@
 ﻿using NStore.Carrinho.API.Model.Validations;
 using System;
+using System.Text.Json.Serialization;
 
 namespace NStore.Carrinho.API.Model
 {
@@ -12,6 +13,7 @@ namespace NStore.Carrinho.API.Model
         public decimal Valor { get; set; }
         public string Imagem { get; set; }
         public Guid CarrinhoId { get; set; }
+        [JsonIgnore]
         public CarrinhoCliente CarrinhoCliente { get; set; }
         public CarrinhoItem()
         {

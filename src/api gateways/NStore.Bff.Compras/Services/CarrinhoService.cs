@@ -22,7 +22,7 @@ namespace NStore.Bff.Compras.Services
 
         public async Task<CarrinhoDTO> ObterCarrinho()
         {
-            var response = await httpClient.GetAsync("/carrinho/");
+            var response = await httpClient.GetAsync("/carrinho");
 
             TratarErrosResponse(response);
 

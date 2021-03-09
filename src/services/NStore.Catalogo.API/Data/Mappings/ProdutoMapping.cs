@@ -13,6 +13,7 @@ namespace NStore.Catalogo.API.Data.Mappings
             builder.Property(c => c.Descricao).IsRequired().HasColumnType("varchar(500)");
             builder.Property(c => c.Imagem).IsRequired().HasColumnType("varchar(250)");
 
+
             builder.ToTable("Produtos");
         }
     }

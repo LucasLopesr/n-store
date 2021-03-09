@@ -31,8 +31,14 @@ namespace NStore.Carrinho.API.Data
                 .HasDatabaseName("IDX_Cliente");
 
             modelBuilder.Entity<CarrinhoCliente>()
+                .Property(c => c.ValorTotal).HasPrecision(18,2);
+
+            modelBuilder.Entity<CarrinhoCliente>()
                 .HasMany(c => c.Itens)
                 .WithOne(i => i.CarrinhoCliente);
+
+            modelBuilder.Entity<CarrinhoItem>()
+                .Property(c => c.Valor).HasPrecision(18, 2);
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 

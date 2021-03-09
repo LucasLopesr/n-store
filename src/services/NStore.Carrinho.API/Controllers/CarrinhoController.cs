@@ -39,7 +39,6 @@ namespace NStore.Carrinho.API.Controllers
             else 
                 ManipularCarrinhoExistente(carrinho, item);
 
-            ValidarCarrinho(carrinho);
             if (!IsOperacaoValida()) return CustomResponse();
 
             await PersistirDados();
