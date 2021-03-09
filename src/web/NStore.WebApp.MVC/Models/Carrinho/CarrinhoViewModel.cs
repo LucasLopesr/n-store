@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace NStore.WebApp.MVC.Models
+namespace NStore.WebApp.MVC.Models.Carrinho
 {
     public class CarrinhoViewModel
     {

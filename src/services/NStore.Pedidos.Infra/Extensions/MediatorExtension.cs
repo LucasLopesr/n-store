@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NStore.Core.DomainObjects;
 using NStore.Core.Mediator;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace NStore.Cliente.API.Extensions
+namespace NStore.Pedidos.Infra.Extensions
 {
     public static class MediatorExtension
     {
@@ -14,9 +14,8 @@ namespace NStore.Cliente.API.Extensions
                 .Entries<Entity>()
                 .Where(x => x.Entity.Notificacoes != null && x.Entity.Notificacoes.Any());
 
-            var entityEntries = domainEntities.ToList();
-            var domainEvents = entityEntries.SelectMany(e => e.Entity.Notificacoes).ToList();
-            entityEntries.ToList().ForEach(entity => entity.Entity.LimparEventos());
+            var domainEvents = domainEntities.SelectMany(e => e.Entity.Notificacoes).ToList();
+            domainEntities.ToList().ForEach(entity => entity.Entity.LimparEventos());
 
             var tasks = domainEvents.Select(async (domainEvent) =>
             {

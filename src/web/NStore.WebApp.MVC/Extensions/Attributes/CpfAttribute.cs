@@ -1,6 +1,7 @@
-﻿using NStore.Core.DomainObjects;
-using System.ComponentModel.DataAnnotations;
-namespace NStore.WebApp.MVC.Extensions
+﻿using System.ComponentModel.DataAnnotations;
+using NStore.Core.DomainObjects;
+
+namespace NStore.WebApp.MVC.Extensions.Attributes
 {
     public class CpfAttribute : ValidationAttribute
     {

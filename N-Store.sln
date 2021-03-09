@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Cliente.API", "src\s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Pagamento.API", "src\services\NStore.Pagamento.API\NStore.Pagamento.API.csproj", "{668B3FCF-A7C3-4DF6-9115-AEEE4E4C209C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Pedido.API", "src\services\NStore.Pedido.API\NStore.Pedido.API.csproj", "{43299E87-31CA-4672-8009-07D49DE3A3BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Pedidos.API", "src\services\NStore.Pedido.API\NStore.Pedidos.API.csproj", "{43299E87-31CA-4672-8009-07D49DE3A3BB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{6E2F6E1A-41B7-42E8-8E14-DA042AA17D00}"
 EndProject
@@ -57,7 +57,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Compras", "Compras", "{68A6888C-0D59-45F8-AB7C-6778C03C493F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.Bff.Compras", "src\api gateways\NStore.Bff.Compras\NStore.Bff.Compras.csproj", "{5729A442-FD49-43D0-9560-7230FF091FAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NStore.Bff.Compras", "src\api gateways\NStore.Bff.Compras\NStore.Bff.Compras.csproj", "{5729A442-FD49-43D0-9560-7230FF091FAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.Pedidos.Infra", "src\services\NStore.Pedidos.Infra\NStore.Pedidos.Infra.csproj", "{206DA676-9DB2-4BDD-BCBE-733A4703B226}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NStore.Pedidos.Domain", "src\services\NStore.Pedidos.Domain\NStore.Pedidos.Domain.csproj", "{ACFEDB44-ED58-4238-A91A-3A793AD01052}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,6 +117,14 @@ Global
 		{5729A442-FD49-43D0-9560-7230FF091FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5729A442-FD49-43D0-9560-7230FF091FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5729A442-FD49-43D0-9560-7230FF091FAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206DA676-9DB2-4BDD-BCBE-733A4703B226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206DA676-9DB2-4BDD-BCBE-733A4703B226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206DA676-9DB2-4BDD-BCBE-733A4703B226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206DA676-9DB2-4BDD-BCBE-733A4703B226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACFEDB44-ED58-4238-A91A-3A793AD01052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACFEDB44-ED58-4238-A91A-3A793AD01052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACFEDB44-ED58-4238-A91A-3A793AD01052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACFEDB44-ED58-4238-A91A-3A793AD01052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -145,6 +157,8 @@ Global
 		{BF065CC6-4232-47D9-8622-1711D3B282A1} = {EE9832DA-4CC4-4C16-914C-69C4DA306FA1}
 		{68A6888C-0D59-45F8-AB7C-6778C03C493F} = {BF065CC6-4232-47D9-8622-1711D3B282A1}
 		{5729A442-FD49-43D0-9560-7230FF091FAF} = {68A6888C-0D59-45F8-AB7C-6778C03C493F}
+		{206DA676-9DB2-4BDD-BCBE-733A4703B226} = {D0F1DDBA-8FF6-476D-84AB-BAAFB7297587}
+		{ACFEDB44-ED58-4238-A91A-3A793AD01052} = {D0F1DDBA-8FF6-476D-84AB-BAAFB7297587}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5887B293-B0E3-48A5-B52E-38306461B52E}

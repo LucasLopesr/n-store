@@ -1,5 +1,4 @@
 ﻿using FluentValidation.Results;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using NStore.Cliente.API.Extensions;
 using NStore.Cliente.API.Models;
@@ -13,7 +12,7 @@ namespace NStore.Cliente.API.Data
 {
     public class ClientesContext : DbContext, IUnitOfWork
     {
-        private IMediatorHandler mediatorHandler;
+        private readonly IMediatorHandler mediatorHandler;
         public ClientesContext(DbContextOptions<ClientesContext> options, IMediatorHandler mediatorHandler) : base(options)
         {
             this.mediatorHandler = mediatorHandler;

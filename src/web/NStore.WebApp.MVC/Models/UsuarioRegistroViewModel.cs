@@ -1,7 +1,7 @@
 ﻿using static NStore.Identidade.API.Utils.MessagesUtils;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using NStore.WebApp.MVC.Extensions;
+using NStore.WebApp.MVC.Extensions.Attributes;
 
 namespace NStore.WebApp.MVC.Models
 {
@@ -26,7 +26,7 @@ namespace NStore.WebApp.MVC.Models
         [DisplayName("Senha")]
         public string Senha { get; set; }
 
-        [Compare("Senha", ErrorMessage = "As senhas não conferem.")]
+        [Compare(nameof(Senha), ErrorMessage = "As senhas não conferem.")]
         [DisplayName("Repita sua senha")]
         public string SenhaConfirmacao { get; set; }
     }

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using NStore.WebApp.MVC.Extensions;
 using NStore.WebApp.MVC.Models;
 using NStore.Core.Communication;
+using NStore.WebApp.MVC.Models.Carrinho;
 
 namespace NStore.WebApp.MVC.Services
 {
