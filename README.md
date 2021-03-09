@@ -11,7 +11,9 @@
 * MediatR
 * RabbitMQ
 * EasyNetMQ
-
+* xUnit
+* MOQ
+* Bogus 
 
 
 ## Run command to install and run container RabbitMQ 
