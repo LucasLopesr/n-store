@@ -57,5 +57,16 @@ namespace NStore.WebApp.MVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        [Route("carrinho/aplicar-voucher")]
+        public async Task<IActionResult> AplicarVoucher(string codigoVoucher)
+        {
+            var resposta = await comprasBffService.AplicarVoucherCarrinho(codigoVoucher);
+
+            if (ResponsePossuiErros(resposta)) return View("Index", await comprasBffService.ObterCarrinho());
+
+            return RedirectToAction("Index");
+        }
     }
 }
