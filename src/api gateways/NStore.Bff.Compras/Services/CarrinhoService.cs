@@ -20,13 +20,13 @@ namespace NStore.Bff.Compras.Services
             this.httpClient = httpClient;
         }
 
-        public async Task<CarrinhoDTO> ObterCarrinho()
+        public async Task<CarrinhoDto> ObterCarrinho()
         {
             var response = await httpClient.GetAsync("/carrinho");
 
             TratarErrosResponse(response);
 
-            return await DeserializarObjetoResponse<CarrinhoDTO>(response);
+            return await DeserializarObjetoResponse<CarrinhoDto>(response);
         }
 
         public async Task<ResponseResult> AdicionarItemCarrinho(ItemCarrinhoDTO produto)

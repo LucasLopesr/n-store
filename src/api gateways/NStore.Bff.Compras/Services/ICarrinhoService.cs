@@ -7,7 +7,7 @@ namespace NStore.Bff.Compras.Services
 {
     public interface ICarrinhoService
     {
-        Task<CarrinhoDTO> ObterCarrinho();
+        Task<CarrinhoDto> ObterCarrinho();
         Task<int> ObterQuantidadeCarrinho();
         Task<ResponseResult> AdicionarItemCarrinho(ItemCarrinhoDTO produto);
         Task<ResponseResult> AtualizarItemCarrinho(Guid produtoId, ItemCarrinhoDTO produto);
