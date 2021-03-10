@@ -30,6 +30,29 @@ namespace NStore.Carrinho.API.Data
                 .HasIndex(c => c.ClienteId)
                 .HasDatabaseName("IDX_Cliente");
 
+
+            modelBuilder.Entity<CarrinhoCliente>()
+                .Ignore(carrinho => carrinho.Voucher)
+                .OwnsOne(carrinho => carrinho.Voucher, voucher =>
+                {
+                    voucher.Property(v => v.Codigo)
+                        .HasColumnName("VoucherCodigo")
+                        .HasColumnType("varchar(50)");
+
+                    voucher.Property(v => v.TipoDesconto)
+                        .HasColumnName("TipoDesconto");
+
+                    voucher.Property(v => v.Percentual)
+                        .HasColumnName("Percentual")
+                        .HasPrecision(18, 2);
+
+                    voucher.Property(v => v.ValorDesconto)
+                        .HasColumnName("ValorDesconto")
+                        .HasPrecision(18, 2);
+                });
+
+
+
             modelBuilder.Entity<CarrinhoCliente>()
                 .Property(c => c.ValorTotal).HasPrecision(18,2);
 
