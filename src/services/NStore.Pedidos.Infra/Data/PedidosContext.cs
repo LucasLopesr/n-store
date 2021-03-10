@@ -12,13 +12,13 @@ namespace NStore.Pedidos.Infra.Data
 {
     public class PedidosContext : DbContext, IUnitOfWork
     {
-       // private readonly IMediatorHandler mediatorHandler;
+        private readonly IMediatorHandler mediatorHandler;
         public PedidosContext(
             DbContextOptions<PedidosContext> options
-           // , IMediatorHandler mediatorHandler
+            , IMediatorHandler mediatorHandler
             ) : base(options)
         {
-      //      this.mediatorHandler = mediatorHandler;
+            this.mediatorHandler = mediatorHandler;
         }
 
         public DbSet<Voucher> Vouchers { get; set; }
@@ -42,7 +42,7 @@ namespace NStore.Pedidos.Infra.Data
         public async Task<bool> Commit()
         {
             var sucesso = await base.SaveChangesAsync() > 0;
-          //  if (sucesso) await mediatorHandler.PublicarEventos(this);
+            if (sucesso) await mediatorHandler.PublicarEventos(this);
 
             return sucesso;
         }

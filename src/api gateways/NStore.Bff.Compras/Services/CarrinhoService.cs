@@ -66,5 +66,16 @@ namespace NStore.Bff.Compras.Services
 
             return carrinho?.Itens.Sum(i => i.Quantidade) ?? 0;
         }
+
+        public async Task<ResponseResult> AplicarVoucherCarrinho(VoucherDto voucher)
+        {
+            var itemContent = ObterConteudo(voucher);
+
+            var response = await httpClient.PostAsync("/carrinho/aplicar-voucher/", itemContent);
+
+            if (!TratarErrosResponse(response)) return await DeserializarObjetoResponse<ResponseResult>(response);
+
+            return RetornoOk();
+        }
     }
 }
