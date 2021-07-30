@@ -37,8 +37,6 @@ namespace NStore.Pedidos.Infra.Data
             foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
                 property.SetColumnType("varchar(100)");
 
-           
-            Ignores(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(PedidosContext).Assembly);
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))

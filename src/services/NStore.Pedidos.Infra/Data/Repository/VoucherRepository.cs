@@ -21,6 +21,11 @@ namespace NStore.Pedidos.Infra.Data.Repository
             return await context.Vouchers.FirstOrDefaultAsync(voucher => voucher.Codigo == codigo);
         }
 
+        public void Atualizar(Voucher voucher)
+        {
+            context.Vouchers.Update(voucher);
+        }
+
         public void Dispose()
         {
             context.Dispose();

@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Threading.Tasks;
 using NStore.Core.Data;
 
@@ -13,6 +14,7 @@ namespace NStore.Pedidos.Domain.Pedidos
         void Adicionar(Pedido pedido);
         void Atualizar(Pedido pedido);
 
+        DbConnection ObterConexao();
         Task<PedidoItem> ObterItemPorId(Guid id);
         Task<PedidoItem> ObterItemPorPedido(Guid pedidoId, Guid produtoId);
     }

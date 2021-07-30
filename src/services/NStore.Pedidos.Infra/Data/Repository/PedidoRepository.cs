@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,8 @@ namespace NStore.Pedidos.Infra.Data.Repository
 
         private readonly PedidosContext _context;
         public IUnitOfWork UnitOfWork => _context;
+
+        public DbConnection ObterConexao() => _context.Database.GetDbConnection();
 
         public PedidoRepository(PedidosContext context)
         {

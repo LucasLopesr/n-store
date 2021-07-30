@@ -28,6 +28,7 @@ namespace NStore.Carrinho.API
             services.AddJwtConfiguration(Configuration);
             services.AddSwaggerConfiguration();
             services.RegisterServices();
+            services.AddMessageBusConfiguration(Configuration);
 
         }
 

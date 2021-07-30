@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\building blocks\NStore.MessageBus\NStore.MessageBus.csproj" />
     <ProjectReference Include="..\..\building blocks\NStore.WebApi.Core\NStore.WebApi.Core.csproj" />
   </ItemGroup>
 

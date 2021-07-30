@@ -63,7 +63,7 @@ namespace NStore.Carrinho.API.Data
             modelBuilder.Entity<CarrinhoItem>()
                 .Property(c => c.Valor).HasPrecision(18, 2);
 
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.Cascade;
 
         }
     }

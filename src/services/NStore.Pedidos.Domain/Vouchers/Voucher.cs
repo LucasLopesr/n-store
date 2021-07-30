@@ -34,5 +34,13 @@ namespace NStore.Pedidos.Domain.Vouchers
             Quantidade = 0;
         }
 
+        public void DebitarQuantidade()
+        {
+            Quantidade -= 1;
+            if (Quantidade >= 1) return;
+
+            MarcarUtilizado();
+        }
+
     }
 }

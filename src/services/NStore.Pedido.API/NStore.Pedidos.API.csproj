@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.90" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -24,11 +25,6 @@
     <ProjectReference Include="..\..\building blocks\NStore.MessageBus\NStore.MessageBus.csproj" />
     <ProjectReference Include="..\..\building blocks\NStore.WebApi.Core\NStore.WebApi.Core.csproj" />
     <ProjectReference Include="..\NStore.Pedidos.Infra\NStore.Pedidos.Infra.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Application\Commands\" />
-    <Folder Include="Application\Events\" />
   </ItemGroup>
 
 </Project>
